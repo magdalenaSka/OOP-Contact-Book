@@ -7,7 +7,7 @@ int AdresatMenadzer :: dodajAdresata()
     adresat = podajDaneNowegoAdresata();
 
     adresaci.push_back(adresat);
-    //plikZAdresatami.dopiszAdresataDoPliku(adresat);
+    plikZAdresatami.dopiszAdresataDoPliku(adresat);
 
     return ++idOstatniegoAdresata;
 }
@@ -16,6 +16,7 @@ Adresat AdresatMenadzer :: podajDaneNowegoAdresata()
 {
     adresat.ustawIdAdresata(pobierzIdNowegoAdresata());
     adresat.ustawIdUzytkownika(idZalogowanegoUzytkownika);
+    cout << "ID zalogowanego Uzytkownika: " << idZalogowanegoUzytkownika << endl;
 
     cout << "Podaj imie: ";
     adresat.ustawImie(wczytajLinie());
@@ -86,4 +87,9 @@ void AdresatMenadzer :: wyswietlWszystkichAdresatow()
         cout << endl << "Ksiazka adresowa jest pusta." << endl << endl;
     }
     system("pause");
+}
+
+void AdresatMenadzer :: wczytajAdresatowZalogowanegoUzytkownikaZPliku()
+{
+    adresaci = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(adresaci);
 }

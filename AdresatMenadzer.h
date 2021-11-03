@@ -6,23 +6,30 @@
 #include <algorithm>
 
 #include "Adresat.h"
+#include "PlikZAdresatami.h"
 
 using namespace std;
 
 class AdresatMenadzer {
 
+    PlikZAdresatami plikZAdresatami;
+
     int idZalogowanegoUzytkownika;
     int idOstatniegoAdresata;
+    int idUsunietegoAdresata;
 
-    Adresat podajDaneNowegoAdresata();
     string wczytajLinie();
     string zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst);
     int pobierzIdNowegoAdresata();
+    Adresat podajDaneNowegoAdresata();
 
 public:
+
+    AdresatMenadzer(string nazwaPlikuZAdresatami) : plikZAdresatami(nazwaPlikuZAdresatami){};
 
     Adresat adresat;
     vector <Adresat> adresaci;
     int dodajAdresata();
     void wyswietlWszystkichAdresatow();
+    void wczytajAdresatowZalogowanegoUzytkownikaZPliku();
 };
