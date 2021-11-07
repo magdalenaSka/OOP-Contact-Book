@@ -2,31 +2,30 @@
 
 #include <iostream>
 #include <vector>
-#include <windows.h>
 #include <fstream>
-#include <sstream>
-#include <cstdlib>
 
 #include "Adresat.h"
 #include "MetodyPomocnicze.h"
+#include "PlikTekstowy.h"
 
 using namespace std;
 
-class PlikZAdresatami {
+class PlikZAdresatami :public PlikTekstowy {
 
-    const string nazwaPlikuZAdresatami;
-    string zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(Adresat adresat);
     bool czyPlikJestPusty();
+    int idOstatniegoAdresata;
     int pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
-    Adresat pobierzDaneAdresata(string daneAdresataOddzielonePionowymiKreskami);
     int pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
-    string pobierzLiczbe(string tekst, int pozycjaZnaku);
+    Adresat pobierzDaneAdresata(string daneAdresataOddzielonePionowymiKreskami);
 
 public:
 
-    PlikZAdresatami(string NAZWAPLIKU) : nazwaPlikuZAdresatami(NAZWAPLIKU) {};
+    PlikZAdresatami(string nazwaPliku) : PlikTekstowy(nazwaPliku) {
+        idOstatniegoAdresata = 0;
+    };
 
-    void dopiszAdresataDoPliku(Adresat adresat);
-    vector <Adresat> wczytajAdresatowZalogowanegoUzytkownikaZPliku(vector <Adresat> adresaci);
-
+    bool dopiszAdresataDoPliku(Adresat adresat);
+    vector <Adresat> wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika);
+    string zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(Adresat adresat);
+    int pobierzIdOstatniegoAdresata();
 };
