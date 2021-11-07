@@ -8,12 +8,14 @@
 
 #include "Uzytkownik.h"
 #include "PlikZUzytkownikami.h"
+#include "MetodyPomocnicze.h"
 
 using namespace std;
 
 class UzytkownikMenadzer {
 
     PlikZUzytkownikami plikZUzytkownikami;
+    vector <Uzytkownik> uzytkownicy;
     int idZalogowanegoUzytkownika;
 
     Uzytkownik podajDaneNowegoUzytkownika();
@@ -23,8 +25,12 @@ class UzytkownikMenadzer {
     string wczytajLinie();
 
 public:
-    vector <Uzytkownik> uzytkownicy;
-    UzytkownikMenadzer(string nazwaPlikuZUzytkownikami) : plikZUzytkownikami(nazwaPlikuZUzytkownikami) {};
+
+    UzytkownikMenadzer(string nazwaPlikuZUzytkownikami) : plikZUzytkownikami(nazwaPlikuZUzytkownikami)
+    {
+        idZalogowanegoUzytkownika = 0;
+        uzytkownicy = plikZUzytkownikami.wczytajUzytkownikowZPliku();
+    };
 
     void rejestracjaUzytkownika();
 
@@ -33,5 +39,7 @@ public:
     void wylogowanieUzytkownika();
 
     void wypiszWszystkichUzytkownikow();
-    void wczytajUzytkownikowZPliku();
+
+    bool czyUzytkownikJestZalogowany();
+    int pobierzIdZalogowanegoUzytkownika();
 };

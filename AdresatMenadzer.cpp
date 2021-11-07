@@ -1,66 +1,50 @@
 #include "AdresatMenadzer.h"
 
-int AdresatMenadzer :: dodajAdresata()
+void AdresatMenadzer :: dodajAdresata()
 {
+    Adresat adresat;
+
     system("cls");
-    cout << " >>> DODAWANIE NOWEGO ADRESATA <<<" << endl << endl;
+    cout << " >>> DODAWANIE NOWEGO ADRESATA <<<" <<endl <<endl;
     adresat = podajDaneNowegoAdresata();
 
     adresaci.push_back(adresat);
-    plikZAdresatami.dopiszAdresataDoPliku(adresat);
-
-    return ++idOstatniegoAdresata;
+    if (plikZAdresatami.dopiszAdresataDoPliku(adresat))
+    {
+        cout << "Dodano nowego adresata do pliku." << endl;
+    }
+    else
+    {
+        cout << "Nie udalo sie dodac adreata do pliku." <<endl;
+    }
+    system("pause");
 }
 
 Adresat AdresatMenadzer :: podajDaneNowegoAdresata()
 {
-    adresat.ustawIdAdresata(pobierzIdNowegoAdresata());
-    adresat.ustawIdUzytkownika(idZalogowanegoUzytkownika);
-    cout << "ID zalogowanego Uzytkownika: " << idZalogowanegoUzytkownika << endl;
+    Adresat adresat;
+
+    adresat.ustawIdAdresata(plikZAdresatami.pobierzIdOstatniegoAdresata() + 1);
+    adresat.ustawIdUzytkownika(ID_ZALOGOWANEGO_UZYTKOWNIKA);
 
     cout << "Podaj imie: ";
-    adresat.ustawImie(wczytajLinie());
-    adresat.ustawImie(zamienPierwszaLitereNaDuzaAPozostaleNaMale(adresat.pobierzImie()));
+    adresat.ustawImie(MetodyPomocnicze::wczytajLinie());
+    adresat.ustawImie(MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(adresat.pobierzImie()));
 
     cout << "Podaj nazwisko: ";
-    adresat.ustawNazwisko(wczytajLinie());
-    adresat.ustawNazwisko(zamienPierwszaLitereNaDuzaAPozostaleNaMale(adresat.pobierzNazwisko()));
+    adresat.ustawNazwisko(MetodyPomocnicze::wczytajLinie());
+    adresat.ustawNazwisko(MetodyPomocnicze::zamienPierwszaLitereNaDuzaAPozostaleNaMale(adresat.pobierzNazwisko()));
 
     cout << "Podaj numer telefonu: ";
-    adresat.ustawNrTel(wczytajLinie());
+    adresat.ustawNrTel(MetodyPomocnicze::wczytajLinie());
 
     cout << "Podaj email: ";
-    adresat.ustawEmail(wczytajLinie());
+    adresat.ustawEmail(MetodyPomocnicze::wczytajLinie());
 
     cout << "Podaj adres: ";
-    adresat.ustawAdres(wczytajLinie());
+    adresat.ustawAdres(MetodyPomocnicze::wczytajLinie());
 
     return adresat;
-}
-
-int AdresatMenadzer::pobierzIdNowegoAdresata() {
-
-    if (adresaci.empty() == true)
-        return 1;
-    else
-        return adresaci.back().pobierzIdAdresata() + 1;
-}
-
-string AdresatMenadzer :: wczytajLinie()
-{
-    string wejscie = "";
-    getline(cin, wejscie);
-    return wejscie;
-}
-
-string AdresatMenadzer :: zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst)
-{
-    if (!tekst.empty())
-    {
-        transform(tekst.begin(), tekst.end(), tekst.begin(), ::tolower);
-        tekst[0] = toupper(tekst[0]);
-    }
-    return tekst;
 }
 
 void AdresatMenadzer :: wyswietlWszystkichAdresatow()
@@ -73,7 +57,8 @@ void AdresatMenadzer :: wyswietlWszystkichAdresatow()
 
         for (int i=0; i<adresaci.size(); i++) {
 
-            cout << endl << "Id:               " << adresaci[i].pobierzIdAdresata() << endl;
+            cout << endl;
+            cout << "Id:                 " << adresaci[i].pobierzIdAdresata() << endl;
             cout << "Imie:               " << adresaci[i].pobierzImie() << endl;
             cout << "Nazwisko:           " << adresaci[i].pobierzNazwisko() << endl;
             cout << "Numer telefonu:     " << adresaci[i].pobierzNrTel() << endl;
@@ -87,9 +72,4 @@ void AdresatMenadzer :: wyswietlWszystkichAdresatow()
         cout << endl << "Ksiazka adresowa jest pusta." << endl << endl;
     }
     system("pause");
-}
-
-void AdresatMenadzer :: wczytajAdresatowZalogowanegoUzytkownikaZPliku()
-{
-    adresaci = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(adresaci);
 }

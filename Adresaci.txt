@@ -1,2 +1,1 @@
-1|Mag|Gaj|745|m@|WRO|
-1|Marli|Gaj|789|lena@|WRO|
+1|1|Magda|G|789|m@|WRO|

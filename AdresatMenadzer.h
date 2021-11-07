@@ -1,35 +1,31 @@
 #pragma once
 
 #include <iostream>
-#include <sstream>
 #include <vector>
-#include <algorithm>
 
 #include "Adresat.h"
 #include "PlikZAdresatami.h"
+#include "UzytkownikMenadzer.h"
+#include "MetodyPomocnicze.h"
 
 using namespace std;
 
 class AdresatMenadzer {
 
+    const int ID_ZALOGOWANEGO_UZYTKOWNIKA;
+
     PlikZAdresatami plikZAdresatami;
-
-    int idZalogowanegoUzytkownika;
-    int idOstatniegoAdresata;
-    int idUsunietegoAdresata;
-
-    string wczytajLinie();
-    string zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst);
-    int pobierzIdNowegoAdresata();
+    vector <Adresat> adresaci;
     Adresat podajDaneNowegoAdresata();
 
 public:
 
-    AdresatMenadzer(string nazwaPlikuZAdresatami) : plikZAdresatami(nazwaPlikuZAdresatami){};
+    AdresatMenadzer(string nazwaPlikuZAdresatami, int idZalogowanegoUzytkownika)
+    : plikZAdresatami(nazwaPlikuZAdresatami), ID_ZALOGOWANEGO_UZYTKOWNIKA(idZalogowanegoUzytkownika)
+    {
+        adresaci = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(ID_ZALOGOWANEGO_UZYTKOWNIKA);
+    };
 
-    Adresat adresat;
-    vector <Adresat> adresaci;
-    int dodajAdresata();
+    void dodajAdresata();
     void wyswietlWszystkichAdresatow();
-    void wczytajAdresatowZalogowanegoUzytkownikaZPliku();
 };
