@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10</x>
+      <y>10</y>
+      <w>380</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>KsiazkaAdresowa
+--
+- uzytkownikMenager : UzytkownikMenager
+- adresatMenadzer : AdresatMenadzer
+- NAZWA_PLIKU_Z_ADRESATAMI : const string
+-
+KsiazkaAdresowa()
++ rejestracjaUzytkownika() : void 
++ wypiszWszystkichUzytkownikow() : void 
++ logowanieUzytkownika() : int
++ zmianaHaslaZalogowanegoUzytkownika() :void
++ wylogowanieUzytkownika() : void
++ dodajAdresata() : void
++ wyswietlWszystkichAdresatow() : void
++ czyUzytkownikJestZalogowany() : bool</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>400</x>
+      <y>10</y>
+      <w>110</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>Uzytkownik
+-
+- id : int
+- login : string
+- haslo : string</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10</x>
+      <y>260</y>
+      <w>380</w>
+      <h>290</h>
+    </coordinates>
+    <panel_attributes>UzytkownikMenager
+--
+- &lt;Uzytkownik&gt; uzytkownicy : vector
+- idZalogowanegoUzytkownika : int
+- plikZUzytkownikami : PlikZUzytkownikami
+--
+UzytkownikMenadzer()
+- podajDaneNowegoUzytkownika() : Uzytkownik
+- pobierzIdNowegoUzytkownika() : int
+- czyIstniejeLogin(string login) : bool
++ rejestracjaUzytkownika() : void
++ logowanieUzytkownika() : int
++ wypiszWszystkichUzytkownikow() : void
++ zmianaHaslaZalogowanegoUzytkownika(): void 
++ wylogowanieUzytkownika() : void
++ czyUzytkownikJestZalogowany() : bool
++ pobierzIdZalogowanegoUzytkownika() : int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10</x>
+      <y>560</y>
+      <w>840</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>PlikZUzytkownikami
+--
+--
+PlikZUzytkownikami()
+- czyPlikJestPusty(fstream &amp;plikTekstowy) : bool
+- zamienDaneUzytkownikaNaLinieZDanymiOddzielonaPionowymiKreskami(Uzytkownik uzytkownik) : string 
+- pobierzDaneUzytkownika(string daneJednegoUzytkownikaOddzielonePionowymiKreskami) : Uzytkownik
++ dopiszUzytkownikaDoPliku(Uzytkownik uzytkownik) : void
++ wczytajUzytkownikowZPliku() : vector &lt;Uzytkownik&gt;
++ zapiszWszystkichUzytkownikowDoPliku(vector &lt;Uzytkownik&gt; uzytkownicy) : void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>400</x>
+      <y>180</y>
+      <w>500</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>MetodyPomocnicze
+--
+--
++ konwerjsaIntNaString(int liczba) : static string
++ konwersjaStringNaInt(string liczba) :static int
++ wczytajLinie() : static string 
++ zamienPierwszaLitereNaDuzaAPozostaleNaMale(string tekst) : static string
++ pobierzLiczbe(string tekst, int pozycjaZnaku) : static string
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>520</x>
+      <y>10</y>
+      <w>160</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>Adresat
+-
+- id : int 
+- idUzytkownika : int
+- imie : string
+- nazwisko : string
+- numerTelefonu : string
+- email : string
+- adres : string
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>400</x>
+      <y>310</y>
+      <w>340</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>AdresatMenager
+-
+- &lt;Adresat&gt; adresaci : vector
+- ID_ZALOGOWANEGO_UZYTKOWNIKA : const int
+- plikZAdresatami : PlikZAdresatami
+--
+AdresatMenadzer()
+- podajDaneNowegoAdresata() : Adresat
++ dodajAdresata() : int
++ wyswietlWszystkichAdresatow() : void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>10</x>
+      <y>720</y>
+      <w>840</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>PlikZAdresatami
+--
+- idOstatniegoAdresata : int 
+--
+PlikZAdresatami()
+- czyPlikJestPusty() : bool
+- pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami) : int
+- pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami) : int
+- pobierzDaneAdresata(string daneAdresataOddzielonePionowymiKreskami) : Adresat
++ dopiszAdresataDoPliku(Adresat adresat) : bool
++ wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika) : vector &lt;Adresat&gt;
++ zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(Adresat adresat) : string
++ pobierzIdOstatniegoAdresata() : int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>690</x>
+      <y>10</y>
+      <w>210</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>PlikTekstowy
+-
+- NAZWA_PLIKU : const string
+-
+PlikTekstowy()
++ czyPlikJestPusty() : bool
++ pobierzNazwePliku() : string
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
