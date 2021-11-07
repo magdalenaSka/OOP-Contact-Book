@@ -22,8 +22,6 @@ class UzytkownikMenadzer {
     int pobierzIdNowegoUzytkownika();
     bool czyIstniejeLogin(string login);
 
-    string wczytajLinie();
-
 public:
 
     UzytkownikMenadzer(string nazwaPlikuZUzytkownikami) : plikZUzytkownikami(nazwaPlikuZUzytkownikami)
