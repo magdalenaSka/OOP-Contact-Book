@@ -13,7 +13,7 @@
 --
 - uzytkownikMenager : UzytkownikMenager
 - adresatMenadzer : AdresatMenadzer
-- NAZWA_PLIKU_Z_ADRESATAMI : const string
+- NAZWA_PLIKU_Z_ADRESATAMI : string
 -
 KsiazkaAdresowa()
 + rejestracjaUzytkownika() : void 
@@ -139,7 +139,7 @@ PlikZUzytkownikami()
     <panel_attributes>AdresatMenager
 -
 - &lt;Adresat&gt; adresaci : vector
-- ID_ZALOGOWANEGO_UZYTKOWNIKA : const int
+- ID_ZALOGOWANEGO_UZYTKOWNIKA : int
 - plikZAdresatami : PlikZAdresatami
 --
 AdresatMenadzer()
@@ -181,7 +181,7 @@ PlikZAdresatami()
     </coordinates>
     <panel_attributes>PlikTekstowy
 -
-- NAZWA_PLIKU : const string
+- NAZWA_PLIKU : string
 -
 PlikTekstowy()
 + czyPlikJestPusty() : bool
