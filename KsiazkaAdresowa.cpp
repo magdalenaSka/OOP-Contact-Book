@@ -14,7 +14,6 @@ void KsiazkaAdresowa::logowanieUzytkownika(){
 
     uzytkownikMenadzer.logowanieUzytkownika();
 
-    //??????
     if (uzytkownikMenadzer.czyUzytkownikJestZalogowany()) {
         adresatMenadzer = new AdresatMenadzer(NAZWA_PLIKU_Z_ADRESATAMI, uzytkownikMenadzer.pobierzIdZalogowanegoUzytkownika());
     }

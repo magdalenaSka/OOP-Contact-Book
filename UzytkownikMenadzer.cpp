@@ -84,7 +84,7 @@ int UzytkownikMenadzer :: logowanieUzytkownika(){
                     cout << endl << "Zalogowales sie." << endl << endl;
                     system("pause");
                     idZalogowanegoUzytkownika = itr -> pobierzId();
-                    return itr -> pobierzId();
+                    return idZalogowanegoUzytkownika;
                 }
             }
             cout << "Wprowadzono 3 razy bledne haslo." << endl;
