@@ -1,3 +1,2 @@
-1|1|Magda|G|789|m@|WRO|
+1|1|Mefalda|Gajewska|789|m@|WRO|
 2|1|Magdalena|Gajewska|791817969|m.gajewska30@wp.pl|Litewska 2, Wrocˆaw|
-3|1|Karol|Bas|789|basu@|WRO|
