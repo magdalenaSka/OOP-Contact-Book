@@ -17,6 +17,11 @@ class AdresatMenadzer {
     PlikZAdresatami plikZAdresatami;
     vector <Adresat> adresaci;
     Adresat podajDaneNowegoAdresata();
+    int podajIdWybranegoAdresata();
+    char wybierzOpcjeZMenuEdycja();
+    void zaktualizujDaneWybranegoAdresata(Adresat adresat);
+    void wyswietlAdresata(Adresat adresat);
+    void wyswietlIloscWyszukanychAdresatow(int iloscAdresatow);
 
 public:
 
@@ -28,4 +33,8 @@ public:
 
     void dodajAdresata();
     void wyswietlWszystkichAdresatow();
+    int usunAdresata();
+    void edytujAdresata();
+    void wyszukajAdresatowPoImieniu();
+    void wyszukajAdresatowPoNazwisku();
 };

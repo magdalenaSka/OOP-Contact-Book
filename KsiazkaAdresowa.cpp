@@ -54,3 +54,19 @@ void KsiazkaAdresowa :: wyswietlWszystkichAdresatow(){
 bool KsiazkaAdresowa::czyUzytkownikJestZalogowany() {
     uzytkownikMenadzer.czyUzytkownikJestZalogowany();
 }
+
+void KsiazkaAdresowa::usunAdresata() {
+    adresatMenadzer->usunAdresata();
+}
+
+void KsiazkaAdresowa::edytujAdresata() {
+    adresatMenadzer->edytujAdresata();
+}
+
+void KsiazkaAdresowa::wyszukajAdresatowPoImieniu() {
+    adresatMenadzer->wyszukajAdresatowPoImieniu();
+}
+
+void KsiazkaAdresowa::wyszukajAdresatowPoNazwisku() {
+    adresatMenadzer->wyszukajAdresatowPoNazwisku();
+}
